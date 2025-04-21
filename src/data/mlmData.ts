@@ -1,4 +1,3 @@
-
 // MLM Commission Structure
 export interface CommissionLevel {
   level: number;
@@ -259,6 +258,16 @@ export const users: User[] = [
   },
   {
     id: "u2",
+    name: "Adebayo",
+    username: "Adebayo",
+    email: "adebayo@mlmpro.com",
+    password: "toheeb1", // In a real app, this would be hashed
+    role: "admin",
+    joinDate: "2023-01-01",
+    referralCode: "ADEBAYO001",
+  },
+  {
+    id: "u3",
     name: "John Doe",
     username: "johndoe",
     email: "john@example.com",
@@ -268,7 +277,7 @@ export const users: User[] = [
     referralCode: "JOHN001",
   },
   {
-    id: "u3",
+    id: "u4",
     name: "Sarah Williams",
     username: "sarahw",
     email: "sarah@example.com",
@@ -279,7 +288,7 @@ export const users: User[] = [
     referredBy: "JOHN001"
   },
   {
-    id: "u4",
+    id: "u5",
     name: "Michael Brown",
     username: "michaelb",
     email: "michael@example.com",
@@ -290,7 +299,7 @@ export const users: User[] = [
     referredBy: "SARAH001"
   },
   {
-    id: "u5",
+    id: "u6",
     name: "Jennifer Davis",
     username: "jenniferd",
     email: "jennifer@example.com",
@@ -310,7 +319,7 @@ export const products: Product[] = [
     description: "A complete dietary supplement with essential vitamins and minerals for daily wellness.",
     category: "Health & Wellness",
     commissionRate: 15,
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500",
     variations: [
       {
         id: "v1",
@@ -343,7 +352,7 @@ export const products: Product[] = [
     description: "Advanced anti-aging formula that helps reduce the appearance of fine lines and wrinkles.",
     category: "Beauty",
     commissionRate: 20,
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=500",
     variations: [
       {
         id: "v4",
@@ -369,7 +378,7 @@ export const products: Product[] = [
     description: "Complete system including supplements, meal plans, and exercise guides for effective weight management.",
     category: "Health & Wellness",
     commissionRate: 25,
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=500",
     variations: [
       {
         id: "v6",
