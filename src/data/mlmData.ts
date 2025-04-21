@@ -44,6 +44,42 @@ export interface DashboardStats {
   pendingCommissions: number;
 }
 
+// User
+export interface User {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string; // This would be hashed in a real application
+  role: 'admin' | 'user';
+  joinDate: string;
+  referralCode: string;
+  referredBy?: string;
+  profileImage?: string;
+}
+
+// Product Variation
+export interface ProductVariation {
+  id: string;
+  name: string;
+  price: number;
+  sku: string;
+  stockQuantity: number;
+}
+
+// Product
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  commissionRate: number;
+  image?: string;
+  variations: ProductVariation[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 // Sample Data - Commission Structure
 export const commissionLevels: CommissionLevel[] = [
   {
@@ -208,3 +244,156 @@ export const userStats: DashboardStats = {
   rewardsEarned: 2,
   pendingCommissions: 145.75,
 };
+
+// Sample Data - Users
+export const users: User[] = [
+  {
+    id: "u1",
+    name: "Admin User",
+    username: "admin",
+    email: "admin@mlmpro.com",
+    password: "admin123", // In a real app, this would be hashed
+    role: "admin",
+    joinDate: "2023-01-01",
+    referralCode: "ADMIN001",
+  },
+  {
+    id: "u2",
+    name: "John Doe",
+    username: "johndoe",
+    email: "john@example.com",
+    password: "password123", // In a real app, this would be hashed
+    role: "user",
+    joinDate: "2024-01-15",
+    referralCode: "JOHN001",
+  },
+  {
+    id: "u3",
+    name: "Sarah Williams",
+    username: "sarahw",
+    email: "sarah@example.com",
+    password: "password123", // In a real app, this would be hashed
+    role: "user",
+    joinDate: "2024-02-03",
+    referralCode: "SARAH001",
+    referredBy: "JOHN001"
+  },
+  {
+    id: "u4",
+    name: "Michael Brown",
+    username: "michaelb",
+    email: "michael@example.com",
+    password: "password123", // In a real app, this would be hashed
+    role: "user",
+    joinDate: "2024-02-18",
+    referralCode: "MICHAEL001",
+    referredBy: "SARAH001"
+  },
+  {
+    id: "u5",
+    name: "Jennifer Davis",
+    username: "jenniferd",
+    email: "jennifer@example.com",
+    password: "password123", // In a real app, this would be hashed
+    role: "user",
+    joinDate: "2024-03-01",
+    referralCode: "JENNIFER001",
+    referredBy: "SARAH001"
+  }
+];
+
+// Sample Data - Products
+export const products: Product[] = [
+  {
+    id: "p1",
+    name: "Premium Health Supplement",
+    description: "A complete dietary supplement with essential vitamins and minerals for daily wellness.",
+    category: "Health & Wellness",
+    commissionRate: 15,
+    image: "/placeholder.svg",
+    variations: [
+      {
+        id: "v1",
+        name: "30-day supply",
+        price: 49.99,
+        sku: "HS-30D",
+        stockQuantity: 100
+      },
+      {
+        id: "v2",
+        name: "60-day supply",
+        price: 89.99,
+        sku: "HS-60D",
+        stockQuantity: 75
+      },
+      {
+        id: "v3",
+        name: "90-day supply",
+        price: 129.99,
+        sku: "HS-90D",
+        stockQuantity: 50
+      }
+    ],
+    createdAt: "2024-01-10T08:00:00Z",
+    updatedAt: "2024-01-10T08:00:00Z"
+  },
+  {
+    id: "p2",
+    name: "Skin Rejuvenation Cream",
+    description: "Advanced anti-aging formula that helps reduce the appearance of fine lines and wrinkles.",
+    category: "Beauty",
+    commissionRate: 20,
+    image: "/placeholder.svg",
+    variations: [
+      {
+        id: "v4",
+        name: "Standard (50ml)",
+        price: 39.99,
+        sku: "BC-50ML",
+        stockQuantity: 150
+      },
+      {
+        id: "v5",
+        name: "Premium (100ml)",
+        price: 69.99,
+        sku: "BC-100ML",
+        stockQuantity: 100
+      }
+    ],
+    createdAt: "2024-01-15T10:30:00Z",
+    updatedAt: "2024-02-01T14:15:00Z"
+  },
+  {
+    id: "p3",
+    name: "Weight Management System",
+    description: "Complete system including supplements, meal plans, and exercise guides for effective weight management.",
+    category: "Health & Wellness",
+    commissionRate: 25,
+    image: "/placeholder.svg",
+    variations: [
+      {
+        id: "v6",
+        name: "Basic Package",
+        price: 99.99,
+        sku: "WMS-BASIC",
+        stockQuantity: 80
+      },
+      {
+        id: "v7",
+        name: "Premium Package",
+        price: 149.99,
+        sku: "WMS-PREMIUM",
+        stockQuantity: 60
+      },
+      {
+        id: "v8",
+        name: "Elite Package",
+        price: 199.99,
+        sku: "WMS-ELITE",
+        stockQuantity: 40
+      }
+    ],
+    createdAt: "2024-02-05T09:15:00Z",
+    updatedAt: "2024-02-05T09:15:00Z"
+  }
+];
