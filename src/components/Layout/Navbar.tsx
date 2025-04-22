@@ -57,16 +57,20 @@ const Navbar: React.FC = () => {
             <div className="bg-mlm-primary text-white p-1.5 rounded-lg">
               <TrendingUp className="h-5 w-5" />
             </div>
-            <span className="font-bold text-xl text-mlm-primary">MLM Pro</span>
+            <span className="font-bold text-xl text-mlm-primary">Export PrimeTaste Global</span>
           </Link>
         </div>
         
-        {user ? (
-          <>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-sm font-medium hover:text-mlm-primary transition-colors">
-                Dashboard
-              </Link>
+        <nav className="hidden md:flex items-center gap-6">
+          <Link to="/" className="text-sm font-medium hover:text-mlm-primary transition-colors">
+            Home
+          </Link>
+          <Link to="/products" className="text-sm font-medium hover:text-mlm-primary transition-colors">
+            Products
+          </Link>
+          
+          {user && (
+            <>
               <Link to="/network" className="text-sm font-medium hover:text-mlm-primary transition-colors">
                 My Network
               </Link>
@@ -77,63 +81,63 @@ const Navbar: React.FC = () => {
                 Rewards
               </Link>
               {user.role === 'admin' && (
-                <>
-                  <Link to="/admin" className="text-sm font-medium hover:text-mlm-primary transition-colors">
-                    Admin
-                  </Link>
-                </>
+                <Link to="/admin" className="text-sm font-medium hover:text-mlm-primary transition-colors">
+                  Admin
+                </Link>
               )}
-            </nav>
+            </>
+          )}
+        </nav>
+        
+        {user ? (
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="relative">
+              <Bell className="h-5 w-5" />
+              <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+            </Button>
             
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
-              </Button>
-              
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Avatar className="cursor-pointer">
-                    {user.profileImage ? (
-                      <AvatarImage src={user.profileImage} alt={user.name} />
-                    ) : (
-                      <AvatarFallback className="bg-mlm-secondary text-white">
-                        {getInitials(user.name)}
-                      </AvatarFallback>
-                    )}
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <div className="flex flex-col space-y-1 p-2">
-                    <p className="text-sm font-medium">{user.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {user.role === 'admin' ? 'Administrator' : 'Member'}
-                    </p>
-                  </div>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => navigate('/profile')}>
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
-                  </DropdownMenuItem>
-                  {user.role === 'admin' && (
-                    <DropdownMenuItem onClick={() => navigate('/admin')}>
-                      <Package className="mr-2 h-4 w-4" />
-                      <span>Admin Dashboard</span>
-                    </DropdownMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="cursor-pointer">
+                  {user.profileImage ? (
+                    <AvatarImage src={user.profileImage} alt={user.name} />
+                  ) : (
+                    <AvatarFallback className="bg-mlm-secondary text-white">
+                      {getInitials(user.name)}
+                    </AvatarFallback>
                   )}
-                  <DropdownMenuItem onClick={() => navigate('/network')}>
-                    <Users className="mr-2 h-4 w-4" />
-                    <span>My Network</span>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="flex flex-col space-y-1 p-2">
+                  <p className="text-sm font-medium">{user.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {user.role === 'admin' ? 'Administrator' : 'Member'}
+                  </p>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate('/profile')}>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                {user.role === 'admin' && (
+                  <DropdownMenuItem onClick={() => navigate('/admin')}>
+                    <Package className="mr-2 h-4 w-4" />
+                    <span>Admin Dashboard</span>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </>
+                )}
+                <DropdownMenuItem onClick={() => navigate('/network')}>
+                  <Users className="mr-2 h-4 w-4" />
+                  <span>My Network</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         ) : (
           <div className="flex items-center gap-4">
             <Button variant="outline" onClick={() => navigate('/login')}>Log in</Button>

@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 import ProductForm from "./pages/ProductForm";
+import ProductShowcase from "./pages/ProductShowcase"; // Add the new import
 import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 
@@ -49,6 +50,9 @@ const App = () => {
             {/* Auth routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            
+            {/* Public routes */}
+            <Route path="/products" element={<ProductShowcase />} />
             
             {/* Protected routes */}
             <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -56,7 +56,7 @@ const Login = () => {
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-mlm-primary">MLM Pro</h1>
+          <h1 className="text-3xl font-bold text-mlm-primary">Export PrimeTaste Global</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Sign in to your account
           </p>
@@ -102,6 +102,11 @@ const Login = () => {
               <Button variant="link" className="p-0" onClick={() => navigate('/register')}>
                 Create one
               </Button>
+            </p>
+            <p className="mt-2">
+              <Link to="/products" className="text-mlm-primary hover:underline">
+                Browse our products without logging in
+              </Link>
             </p>
           </div>
         </div>
